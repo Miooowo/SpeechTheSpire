@@ -1,0 +1,12 @@
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\SpeechTheSpire.csproj.AssemblyReference.cache
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\SpeechTheSpire.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\SpeechTheSpire.AssemblyInfoInputs.cache
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\SpeechTheSpire.AssemblyInfo.cs
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\SpeechTheSpire.csproj.CoreCompileInputs.cache
+c:\Users\Miooo\Documents\SpeechTheSpire\bin\Debug\net9.0\SpeechTheSpire.deps.json
+C:\Users\Miooo\Documents\SpeechTheSpire\bin\Debug\net9.0\SpeechTheSpire.dll
+C:\Users\Miooo\Documents\SpeechTheSpire\bin\Debug\net9.0\SpeechTheSpire.pdb
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\SpeechTheSpire.dll
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\refint\SpeechTheSpire.dll
+C:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\SpeechTheSpire.pdb
+c:\Users\Miooo\Documents\SpeechTheSpire\obj\Debug\net9.0\ref\SpeechTheSpire.dll

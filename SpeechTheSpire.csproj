@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>true</ImplicitUsings>
+		<LangVersion>12.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<AssemblyName>SpeechTheSpire</AssemblyName>
+		<RootNamespace>SpeechTheSpire</RootNamespace>
+		<!-- 改成你的杀戮尖塔2安装目录 -->
+		<Sts2Dir>F:\SteamLibrary\steamapps\common\Slay the Spire 2</Sts2Dir>
+		<Sts2DataDir>$(Sts2Dir)\data_sts2_windows_x86_64</Sts2DataDir>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- 排除子目录 Sts2Mod，避免误编其源码与 obj 导致程序集特性重复 -->
+		<Compile Remove="Sts2Mod\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="sts2">
+			<HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Steamworks.NET">
+			<HintPath>$(Sts2DataDir)\Steamworks.NET.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="GodotSharp">
+			<HintPath>$(Sts2DataDir)\GodotSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="CopyMod" AfterTargets="Build">
+		<Message Text="Copying SpeechTheSpire mod to Slay the Spire 2 mods folder..." Importance="high" />
+		<MakeDir Directories="$(Sts2Dir)\mods\SpeechTheSpire" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Sts2Dir)\mods\SpeechTheSpire\" />
+		<Copy SourceFiles="$(ProjectDir)mod_manifest.json" DestinationFolder="$(Sts2Dir)\mods\SpeechTheSpire\" />
+	</Target>
+</Project>
