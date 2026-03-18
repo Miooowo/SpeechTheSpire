@@ -1,0 +1,12 @@
+{
+  "id": "SpeechTheSpire",
+  "pck_name": "SpeechTheSpire",
+  "name": "SpeechTheSpire",
+  "author": "ClockCycas",
+  "description": "出牌时显示角色语句气泡：静默猎人「……」；故障机器人为卡牌英文名十六进制；储君卡牌名+「！」；其他角色显示卡牌名。",
+  "version": "v0.1.1",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": [],
+  "affects_gameplay": true
+}

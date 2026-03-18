@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.5.1">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>true</ImplicitUsings>
@@ -12,13 +12,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- 排除不应参与编译的源码目录，避免引入重复的程序集属性 -->
+		<!-- 排除子目录 Sts2Mod，避免误编其源码与 obj 导致程序集特性重复 -->
 		<Compile Remove="Sts2Mod\**" />
-		<!-- Godot/VS 生成的中间文件可能会导致 TargetFrameworkAttribute 重复 -->
-		<Compile Remove="obj\**\*.cs" />
-		<Compile Remove="bin\**\*.cs" />
-		<Compile Remove=".godot\mono\temp\obj\**\*.cs" />
-		<Compile Remove=".godot\mono\temp\bin\**\*.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="sts2">
@@ -43,6 +38,6 @@
 		<Message Text="Copying SpeechTheSpire mod to Slay the Spire 2 mods folder..." Importance="high" />
 		<MakeDir Directories="$(Sts2Dir)\mods\SpeechTheSpire" />
 		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Sts2Dir)\mods\SpeechTheSpire\" />
-		<Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)\mods\$(MSBuildProjectName)/" />
+		<Copy SourceFiles="$(ProjectDir)mod_manifest.json" DestinationFolder="$(Sts2Dir)\mods\SpeechTheSpire\" />
 	</Target>
 </Project>
