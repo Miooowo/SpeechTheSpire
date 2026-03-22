@@ -14,6 +14,6 @@ public static class Entry
 	{
 		_harmony = new Harmony(ModId);
 		_harmony.PatchAll();
-		Log.Debug("SpeechTheSpire: mod initialized (card play speech bubbles).");
+		Log.Debug("SpeechTheSpire: mod initialized (card + rest site speech bubbles).");
 	}
 }

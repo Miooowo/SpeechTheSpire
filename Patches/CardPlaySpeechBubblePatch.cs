@@ -1,5 +1,3 @@
-using System.Globalization;
-using System.Text;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -63,7 +61,7 @@ public static class CardPlaySpeechBubblePatch
 		switch (characterId?.ToLowerInvariant())
 		{
 			case "defect":
-				return CardNameToHexAscii(GetEnglishStyleCardName(card));
+				return SpeechBubbleHex.CardNameToHexAscii(SpeechBubbleHex.EnglishTitleCaseFromEntry(card.Id.Entry));
 			case "regent":
 				return card.TitleLocString.GetFormattedText() + GetExclamationsForRarity(card.Rarity);
 			default:
@@ -86,7 +84,7 @@ public static class CardPlaySpeechBubblePatch
 				string engKey = cardEntry + "_ENG";
 				if (table.HasEntry(engKey))
 				{
-					text = CardNameToHexAscii(table.GetRawText(engKey));
+					text = SpeechBubbleHex.CardNameToHexAscii(table.GetRawText(engKey));
 					return true;
 				}
 				return false;
@@ -121,30 +119,4 @@ public static class CardPlaySpeechBubblePatch
 		return new string(exclamation, count);
 	}
 
-	private static string GetEnglishStyleCardName(CardModel card)
-	{
-		string entry = card.Id.Entry;
-		if (string.IsNullOrEmpty(entry))
-			return entry;
-		string withSpaces = entry.Replace('_', ' ');
-		return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(withSpaces.ToLowerInvariant());
-	}
-
-	private static string CardNameToHexAscii(string text)
-	{
-		if (string.IsNullOrEmpty(text))
-			return string.Empty;
-		byte[] bytes = Encoding.ASCII.GetBytes(text);
-		var sb = new StringBuilder();
-		for (int i = 0; i < bytes.Length; i += 4)
-		{
-			if (sb.Length > 0)
-				sb.Append(' ');
-			uint word = 0;
-			for (int j = 0; j < 4 && i + j < bytes.Length; j++)
-				word = (word << 8) | bytes[i + j];
-			sb.Append("0x").Append(word.ToString("X8"));
-		}
-		return sb.ToString();
-	}
 }
